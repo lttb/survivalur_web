@@ -1,7 +1,7 @@
-import Home from 'src/containers/Home.jsx';
+import Template from 'src/pages/Template';
 
 export default {
-  '/': { component: Home, exact: true },
-  '/test1': { component: Home },
-  '/test2': { component: Home },
+  '/': { component: Template, exact: true },
+  '/test1': { component: Template },
+  '/test2': { component: Template },
 };

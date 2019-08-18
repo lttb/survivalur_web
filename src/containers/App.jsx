@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import RouterView from 'src/modules/router/router'
+import RouterView from 'src/modules/router/Router'
 import { BrowserRouter as Router } from 'react-router-dom'
 
 import { routes } from 'src/modules/router'

@@ -27,7 +27,7 @@ Build development bundle: <br/>
 For creation new routes use routes configurations from /src/configuration folder: <br/>
 <code>
   export default {
-      '/': { component: Home, exact: true },
+      '/': { component: Template, exact: true },
       '/mypage': { component: MyPage },
   }
 </code>

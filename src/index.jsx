@@ -5,4 +5,10 @@ import App from 'src/containers/App.jsx'
 import './styles/default.css'
 import MainStore from 'src/stores/Main'
 
-ReactDOM.render(<App store={MainStore} />, document.getElementById('root'))
+function initProject() {
+  const root = document.getElementById('root');
+  ReactDOM.render(<App store={MainStore} />, root)
+
+}
+
+initProject();

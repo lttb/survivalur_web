@@ -52,7 +52,6 @@
     "html-webpack-plugin": "3.2.0",
     "husky": "^3.0.4",
     "lint-staged": "^9.2.3",
-    "mobx-react": "5.4.3",
     "prettier": "^1.18.2",
     "prop-types": "^15.7.2",
     "react-dom": "16.8.6",
@@ -64,6 +63,8 @@
   "dependencies": {
     "react": "16.8.6",
     "react-router-dom": "5.0.0",
-    "mobx": "5.9.4"
+    "mobx": "5.9.4",
+    "mobx-react": "5.4.3",
+    "reshadow": "0.0.1-alpha.68"
   }
 }
