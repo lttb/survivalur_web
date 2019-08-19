@@ -7,25 +7,17 @@ import Paralax from 'src/containers/Paralax';
 
 const Wrapper = styled.div`
   width: 100%;
+  max-width: 1200px;
   position: relative;
+  margin: 0 auto;
 `;
 
-const Title = styled.h1`
-  color: #011033ж
-  padding: 0;
-  margin: 0;
-  font-weight: 400
-  position: fixed;
-`;
 
 @observer
 class Template extends Component {
   render() {
     return (
       <Wrapper>
-        <Title>
-          Survivalur
-        </Title>
         <Paralax/>
       </Wrapper>
     );

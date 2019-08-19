@@ -4,21 +4,63 @@ import { observer } from 'mobx-react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  width: 1382px;
+  width: 100%;
+  height: 400px;
   background: linear-gradient(#85a2f8, #d4defe);
   position: relative;
-  height: 400px;
   overflow: hidden;
+  @media (max-width: 1150px) {
+    height: 300px;
+  }
+  @media (max-width: 875px) {
+    height: 200px;
+  }
+  @media (max-width: 580px) {
+    height: 130px;
+  }
 `;
 
 const Layer = styled.div`
-  width: 1382px;
-  background: url(${props => props.image}) 100% no-repeat;
-  color: #fff;
   width: 100%;
   height: 500px;
+  background-image: url(${props => props.image});
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: #fff;
   position: absolute;
-  top: ${props => `${props.top}px` || 0}
+  transition: top .3s ease-out;
+  will-change: top;
+  top: ${props => `${props.top}px` || 0};
+  
+  @media (max-width: 1150px) {
+    height: 400px;
+  }
+  @media (max-width: 875px) {
+    height: 350px;
+  }
+  @media (max-width: 580px) {
+    height: 300px;
+  }
+`;
+
+const Content = styled.div`
+  
+`;
+
+const Title = styled.h1`
+  color: #ececec;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  z-index: 222;
+  bottom: -43px;
+  font-weight: 600;
+  font-size: 70px;
+  text-shadow: 0 11px 11px #000000;
+  text-transform: uppercase;
+  font-family: "Minecraft",sans-serif;
 `;
 
 @observer
@@ -52,38 +94,44 @@ class Paralax extends Component {
     document.addEventListener('scroll',this.onScroll.bind(this));
   }
 
-  createDefaultOffsets() {
-    const defaultOffsets = {};
-
-    for (const layer of this.state.layers) {
-      defaultOffsets[layer.id] = 0;
-    };
-
-    this.setState({
-      offsets: defaultOffsets
-    })
-  }
-
   onScroll() {
     const reculcOffsets = {};
     const { layers } = this.state;
 
-    for (const layer of layers) {
+    layers.forEach(layer => {
       reculcOffsets[layer.id] = window.scrollY / layer.sensitive;
-    };
+    });
 
     this.setState({
       offsets: reculcOffsets
     })
   }
 
+  createDefaultOffsets() {
+    const { layers } = this.state;
+    const defaultOffsets = {};
+
+    layers.forEach(layer => {
+      defaultOffsets[layer.id] = 0;
+    });
+
+    this.setState({
+      offsets: defaultOffsets
+    });
+  }
+
   render() {
+    const { layers, offsets } = this.state;
     return(
-      <Container>
-        {
-          this.state.layers.map(layer => <Layer key={layer.id} image={layer.image} top={this.state.offsets[layer.id]}>1</Layer>)
-        }
-      </Container>
+      <Content>
+        <Container>
+          {
+            layers.map(layer => <Layer key={layer.id} image={layer.image} top={offsets[layer.id]}/>)
+          }
+        </Container>
+        <Title>Survivalur</Title>
+      </Content>
+
     );
   }
 }

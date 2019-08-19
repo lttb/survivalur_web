@@ -24,5 +24,10 @@
     "eslint.options": {
       "experimentalDecorators": true
     }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
   }
 }

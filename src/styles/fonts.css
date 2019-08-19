@@ -8,3 +8,9 @@
   font-weight: 400;
   src: url("~fonts/Noto_Sans/NotoSans-Regular.ttf");
 }
+
+@font-face {
+  font-family: 'Minecraft';
+  font-weight: 400;
+  src: url("~fonts/Minecraft/minecraft.ttf");
+}
