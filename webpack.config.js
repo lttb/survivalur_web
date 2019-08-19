@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: './src/index.jsx',
@@ -12,6 +13,7 @@ module.exports = {
     alias: {
       src: path.resolve(__dirname, 'src'),
       fonts: path.resolve(__dirname, 'src/resources/fonts'),
+      images: path.resolve(__dirname, 'src/resources/images'),
     },
   },
   module: {
@@ -38,12 +40,31 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images',
+              publicPath: 'images',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '/src/index.html'),
     }),
+    new CopyPlugin([
+      {
+        from: path.join(__dirname, 'src/resources/images'),
+        to: path.join(__dirname, 'build/images'),
+      },
+    ]),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),

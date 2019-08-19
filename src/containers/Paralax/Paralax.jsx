@@ -28,7 +28,7 @@ const Layer = styled.div`
   background-repeat: no-repeat;
   color: #fff;
   position: absolute;
-  transition: top .3s ease-out;
+  // transition: top .3s ease-out;
   will-change: top;
   top: ${props => `${props.top}px` || 0};
   
@@ -44,92 +44,118 @@ const Layer = styled.div`
 `;
 
 const Content = styled.div`
-  
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 `;
 
 const Title = styled.h1`
-  color: #ececec;
   width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  color: #ececec;
   padding: 0;
   margin: 0;
-  position: absolute;
-  text-align: center;
-  z-index: 222;
-  bottom: -43px;
+  z-index: 2;
   font-weight: 600;
-  font-size: 70px;
-  text-shadow: 0 11px 11px #000000;
+  font-size: 50px;
+  text-shadow: 3px 3px 3px #000000;
   text-transform: uppercase;
   font-family: "Minecraft",sans-serif;
+  top: calc(100% - ${props => props.offsetTop}px);
+  position: absolute;
+  height: 100px;
+  background-image: url('/images/logo.png');
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-size .2s ease-out;
+  
+  @media (max-width: 1150px) {
+    top: calc(100% - 70px);
+  }
+  @media (max-width: 875px) {
+    top: calc(100% - 70px);
+  }
+  @media (max-width: 580px) {
+    top: calc(100% - 70px);
+  }
 `;
 
 @observer
 class Paralax extends Component {
   constructor() {
     super();
-    this.state = {
-      layers: [
-        {
-          id: 2,
-          image: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/background.png',
-          sensitive: 2.5
-        },
-        {
-          id: 3,
-          image: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/clouds.png',
-          sensitive: -5
-        },
-        {
-          id: 1,
-          image: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/steve-alex.png',
-          sensitive: -4.3
-        },
-      ],
-      offsets: {}
+    this.layers = [
+      {
+        id: 2,
+        image: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/background.png',
+        sensitive: 2.5,
+        ref: React.createRef()
+      },
+      {
+        id: 3,
+        image: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/clouds.png',
+        sensitive: -5,
+        ref: React.createRef()
+      },
+      {
+        id: 1,
+        image: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/steve-alex.png',
+        sensitive: -4.3,
+        ref: React.createRef()
+      },
+    ];
+
+    this.settings = {
+      title: {
+        offset: {
+          top: 43
+        }
+      }
     };
+
+    this.containerRef = React.createRef();
+    this.titleRef = React.createRef();
+
   }
 
   componentDidMount() {
-    this.createDefaultOffsets();
     document.addEventListener('scroll',this.onScroll.bind(this));
   }
 
   onScroll() {
-    const reculcOffsets = {};
-    const { layers } = this.state;
+    const { layers } = this;
+    const titleStyle = this.titleRef.current.style;
+    if (window.innerWidth > 980) {
+      if (window.scrollY < this.containerRef.current.offsetHeight - this.settings.title.offset.top) {
+        layers.forEach(layer => {
+          const element = layer.ref.current;
+          element.style.top = `${window.scrollY / layer.sensitive}px`
+        });
 
-    layers.forEach(layer => {
-      reculcOffsets[layer.id] = window.scrollY / layer.sensitive;
-    });
-
-    this.setState({
-      offsets: reculcOffsets
-    })
-  }
-
-  createDefaultOffsets() {
-    const { layers } = this.state;
-    const defaultOffsets = {};
-
-    layers.forEach(layer => {
-      defaultOffsets[layer.id] = 0;
-    });
-
-    this.setState({
-      offsets: defaultOffsets
-    });
+        titleStyle.backgroundSize = '50%';
+        titleStyle.position = 'absolute';
+        titleStyle.top = `calc(100% - ${this.settings.title.offset.top}px)`;
+      } else {
+        titleStyle.backgroundSize = '30%';
+        titleStyle.position = 'fixed';
+        titleStyle.top = 0;
+      }
+    }
   }
 
   render() {
-    const { layers, offsets } = this.state;
     return(
       <Content>
-        <Container>
+        <Container ref={this.containerRef}>
           {
-            layers.map(layer => <Layer key={layer.id} image={layer.image} top={offsets[layer.id]}/>)
+            this.layers.map(layer => <Layer ref={layer.ref} key={layer.id} image={layer.image} top={0} />)
           }
         </Container>
-        <Title>Survivalur</Title>
+        <Title offsetTop={this.settings.title.offset.top} ref={this.titleRef}/>
       </Content>
 
     );

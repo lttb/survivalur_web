@@ -12,6 +12,13 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
+const Mock = styled.div`
+  width: 100%;
+  height: 500px;
+  background: white;
+  position: relative;
+  margin-top: 100px;
+`;
 
 @observer
 class Template extends Component {
@@ -19,6 +26,7 @@ class Template extends Component {
     return (
       <Wrapper>
         <Paralax/>
+        <Mock/>
       </Wrapper>
     );
   }
