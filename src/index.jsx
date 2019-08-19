@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from 'src/containers/App.jsx'
 
-import './styles/default.css'
+import 'src/styles/default.css'
 import MainStore from 'src/stores/Main'
 
 function initProject() {
