@@ -1,0 +1,23 @@
+div {
+  width: 100%;
+  height: 400px;
+  background: linear-gradient(#85a2f8, #d4defe);
+  position: relative;
+  overflow: hidden;
+  /*@media (max-width: 1150px) {*/
+  /*  height: 300px;*/
+  /*}*/
+  /*@media (max-width: 875px) {*/
+  /*  height: 200px;*/
+  /*}*/
+  /*@media (max-width: 580px) {*/
+  /*  height: 130px;*/
+}
+
+content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
