@@ -24,12 +24,12 @@ class Main extends Component {
         <Paralax
           layers={[
             {
-              zIndex: 0,
+              zIndex: 2,
               src: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/steve-alex.png',
               alt: 'Steve'
             },
             {
-              zIndex: 0,
+              zIndex: 1,
               src: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/background.png',
               alt: 'Background'
             },
