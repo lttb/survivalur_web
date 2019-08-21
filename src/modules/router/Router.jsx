@@ -25,7 +25,7 @@ const Router = props => {
 };
 
 Router.propTypes = {
-  routes: Types.array.isRequired,
+  routes: Types.object.isRequired,
   children: Types.array,
 };
 

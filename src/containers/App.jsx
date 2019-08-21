@@ -4,8 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import { routes } from 'src/modules/router'
 
-import 'src/styles/fonts.css';
-import 'src/styles/default.css';
+import 'src/resources/css/variables.css';
+import 'src/resources/css/default.css';
 
 class App extends PureComponent {
   render() {

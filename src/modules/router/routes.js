@@ -1,7 +1,7 @@
-import Template from 'src/pages/Template';
+import MainPage from 'src/pages/Main';
 
 export default {
-  '/': { component: Template, exact: true },
-  '/test1': { component: Template },
-  '/test2': { component: Template },
+  '/': { component: MainPage, exact: true },
+  '/test1': { component: MainPage },
+  '/test2': { component: MainPage },
 };
