@@ -1,0 +1,15 @@
+img {
+  z-index: 1;
+  display: inline-block;
+  transition: .3s;
+  position: absolute;
+  width: 600px;
+  left: calc(50% - 600px / 2);
+  top: calc(50% - 30px / 2);
+}
+
+img[|isFixed] {
+  width: 500px;
+  left: calc(50% - 500px / 2);
+  top: calc(50% - 20px / 2);
+}

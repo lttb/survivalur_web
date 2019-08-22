@@ -1,9 +1,9 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import Types from 'prop-types'
+import React from 'react';
+import { Route } from 'react-router-dom';
+import Types from 'prop-types';
 
 const Router = props => {
-  const { routes, children } = props
+  const { routes, children } = props;
 
   return (
     <>
@@ -18,10 +18,10 @@ const Router = props => {
             exact={params.exact || false}
             component={params.component}
           />
-        )
+        );
       })}
     </>
-  )
+  );
 };
 
 Router.propTypes = {
@@ -33,4 +33,4 @@ Router.defaultProps = {
   children: [],
 };
 
-export default Router
+export default Router;

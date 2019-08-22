@@ -9,13 +9,13 @@ import Layer from './Layer';
 class Index extends Component {
   static propTypes = {
     layers: Types.array.isRequired,
-    aspectRatio: Types.string.isRequired
+    aspectRatio: Types.string.isRequired,
   };
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      containerHeight: 0
+      containerHeight: 0,
     };
 
     this.rootRef = React.createRef();
@@ -28,7 +28,7 @@ class Index extends Component {
 
   componentDidMount() {
     this.onResize();
-    window.addEventListener('resize', this.onResize.bind(this))
+    window.addEventListener('resize', this.onResize.bind(this));
   }
 
   onResize() {
@@ -37,8 +37,9 @@ class Index extends Component {
     const [widthAspect, heightAspect] = aspectRatio.split(':');
 
     this.setState({
-      containerHeight: this.root.current.offsetWidth * heightAspect / widthAspect
-    })
+      containerHeight:
+        (this.root.current.offsetWidth * heightAspect) / widthAspect,
+    });
   }
 
   get root() {
@@ -104,15 +105,14 @@ class Index extends Component {
   }
 
   render() {
-    const { layers, layersComparator, state } = this;
+    const { layers, layersComparator, state, props } = this;
     const { containerHeight } = state;
     return styled(styles)`
       container {
-         height: ${`${containerHeight}px`};
+        height: ${`${containerHeight}px`};
       }
     `(
-      <wrapper ref={this.rootRef}>
-        <h3>Paralax component</h3>
+      <wrapper className={props.className} ref={this.rootRef}>
         <container>
           {layers.sort(layersComparator).map((layer, index) => {
             return (

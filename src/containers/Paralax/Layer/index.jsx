@@ -19,7 +19,7 @@ class Layer extends Component {
     return styled(styles)`
       top: ${y}px;
       left: ${x}px;
-    `(<img ref={this.rootRef} src={src} alt={alt}/>);
+    `(<img ref={this.rootRef} src={src} alt={alt} />);
   }
 }
 
@@ -28,7 +28,7 @@ Layer.propTypes = {
   src: Types.string.isRequired,
   alt: Types.string.isRequired,
   x: Types.number.isRequired,
-  y: Types.number.isRequired
+  y: Types.number.isRequired,
 };
 
 Layer.defaultProps = {

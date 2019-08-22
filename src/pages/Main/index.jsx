@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Types from 'prop-types';
 
 import Paralax from 'src/containers/Paralax';
+import Header from 'src/containers/Header';
 
 import styled from 'reshadow';
 import styles from './Main.shadow.css';
@@ -16,7 +17,17 @@ class Main extends Component {
   render() {
     return styled(styles)(
       <container>
-        <h1>Main Page</h1>
+        <div
+          style={{
+            width: '100%',
+            height: '50px',
+            background: 'black',
+            color: 'white',
+          }}
+        >
+          123
+        </div>
+        <Header />
         <Paralax
           layers={[
             {
