@@ -19,7 +19,7 @@ class Main extends Component {
 
   render() {
     return styled(styles)(
-      <div>
+      <container>
         <h1>Main Page</h1>
         <Paralax
           layers={[
@@ -40,7 +40,7 @@ class Main extends Component {
             }
           ]}
         />
-      </div>
+      </container>
     );
   }
 }

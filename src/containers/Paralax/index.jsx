@@ -56,8 +56,8 @@ class Index extends Component {
     this.layers = this.layers.map(layer => {
       return {
         ...layer,
-        x: layer.x + 4,
-        y: layer.y + 4,
+        x: layer.x,
+        y: (window.scrollY - container.offsetTop) * -0.4,
       };
     });
   }
