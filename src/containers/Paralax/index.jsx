@@ -36,6 +36,16 @@ class Index extends Component {
     });
   }
 
+  setDefaultLayersPositions() {
+    this.layers = this.layers.map(layer => {
+      return {
+        ...layer,
+        x: 0,
+        y: 0,
+      };
+    });
+  }
+
   layersComparator(a, b) {
     return a.zIndex < b.zIndex ? -1 : 1;
   }
@@ -48,6 +58,9 @@ class Index extends Component {
     ) {
       this.updateParams();
       this.updateDOM();
+    } else if (window.scrollY < container.offsetTop) {
+      this.setDefaultLayersPositions();
+      this.updateDOM();
     }
   }
 
@@ -57,7 +70,7 @@ class Index extends Component {
       return {
         ...layer,
         x: layer.x,
-        y: (window.scrollY - container.offsetTop) * -0.4,
+        y: (window.scrollY - container.offsetTop) * layer.sensitive,
       };
     });
   }

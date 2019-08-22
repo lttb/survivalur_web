@@ -26,17 +26,20 @@ class Main extends Component {
             {
               zIndex: 2,
               src: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/steve-alex.png',
-              alt: 'Steve'
+              alt: 'Steve',
+              sensitive: 0.5
             },
             {
               zIndex: 1,
               src: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/background.png',
-              alt: 'Background'
+              alt: 'Background',
+              sensitive: 0.3
             },
             {
               zIndex: 0,
               src: 'https://www.minecraft.net/etc.clientlibs/minecraft/clientlibs/main/resources/img/startpage-hero/clouds.png',
-              alt: 'Clouds'
+              alt: 'Clouds',
+              sensitive: 0.1
             }
           ]}
         />
