@@ -1,0 +1,10 @@
+content {
+  margin: 50px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+Card {
+  margin-bottom: 50px;
+}
