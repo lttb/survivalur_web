@@ -17,8 +17,10 @@ class Layer extends Component {
   render() {
     const { src, alt, x, y } = this.props;
     return styled(styles)`
-      top: ${y}px;
-      left: ${x}px;
+      img {
+        top: ${y}px;
+        left: ${x}px;
+      }
     `(<img ref={this.rootRef} src={src} alt={alt} />);
   }
 }

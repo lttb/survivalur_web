@@ -1,9 +1,8 @@
 {
-  "plugins": ["reshadow/babel"],
   "presets": [
     "@babel/preset-env",
     "@babel/preset-react",
     "mobx"
   ],
-  "plugins": ["@babel/plugin-transform-runtime", "reshadow/babel"]
+  "plugins": ["@babel/plugin-transform-runtime", ["reshadow/babel", {"postcss": false, "files": false}]]
 }
